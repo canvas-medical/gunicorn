@@ -574,7 +574,7 @@ class Arbiter:
         workers = self.WORKERS.items()
         workers = sorted(workers, key=lambda w: w[1].age)
         while len(workers) > self.num_workers:
-            self.log("KILLING WORKER because there are {} when there should be {}", len(workers), self.num_workers)
+            self.log.info("KILLING WORKER because there are {} when there should be {}", len(workers), self.num_workers)
             (pid, _) = workers.pop(0)
             self.kill_worker(pid, signal.SIGTERM)
 
